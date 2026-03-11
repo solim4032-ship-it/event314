@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화이트데이 사탕 테스트</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Cute Font', cursive;
+margin:0;
+text-align:center;
+}
+
+/* 질문 페이지 배경 */
+.questionPage{
+background:url("question_bg.png") center/cover no-repeat;
+min-height:100vh;
+}
+
+/* 결과 페이지 배경 */
+.resultPage{
+background:url("result_bg.png") center/cover no-repeat;
+min-height:100vh;
+}
+
+/* 마우스 커서 */
+body{
+cursor:url("cursor.png"), auto;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:60px;
+}
+
+h1{
+font-size:50px;
+color:#ff4d88;
+}
+
+.question{
+margin:35px 0;
+font-size:30px;
+}
+
+button{
+font-family:'Cute Font', cursive;
+font-size:26px;
+padding:12px 30px;
+margin:10px;
+border:none;
+border-radius:14px;
+background:#ff9ecb;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff7ab8;
+}
+
+#result{
+display:none;
+font-size:45px;
+color:#ff2e63;
+margin-top:80px;
+}
+
+</style>
+</head>
+
+<body class="questionPage">
+
+<div class="container">
+
+<h1>🍬 화이트데이 사탕 테스트 🍬</h1>
+
+<div class="question">
+Q1. 여자친구가 귀여운가요?<br>
+<button>매우 그렇다</button>
+<button>당연하다</button>
+<button>귀여워서 사탕 사주고 싶다</button>
+</div>
+
+<div class="question">
+Q2. 여자친구가 달달한걸 좋아하나요?<br>
+<button>좋아한다</button>
+<button>엄청 좋아한다</button>
+<button>사탕이면 더 좋아한다</button>
+</div>
+
+<div class="question">
+Q3. 나는 여자친구를 사랑하나요?<br>
+<button>사랑한다</button>
+<button>많이 사랑한다</button>
+<button>사탕 사줄 정도로 사랑한다</button>
+</div>
+
+<button onclick="showResult()">테스트 결과 보기</button>
+
+<div id="result">
+🎉 테스트 결과 🎉<br><br>
+화이트데이에<br>
+<b>사탕을 사줘야 합니다 🍬</b><br><br>
+이 테스트는 100% 정확합니다.
+</div>
+
+</div>
+
+<script>
+
+function showResult(){
+
+document.body.classList.remove("questionPage")
+document.body.classList.add("resultPage")
+
+document.getElementById("result").style.display="block"
+
+window.scrollTo(0,0)
+
+}
+
+</script>
+
+</body>
+</html>
