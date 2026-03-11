@@ -2,58 +2,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>화이트데이 사탕 테스트</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
 
 <style>
 
+/* 기본 */
+
 body{
-font-family:'Cute Font', cursive;
 margin:0;
+font-family:'Cute Font', cursive;
 text-align:center;
-}
-
-/* 질문 페이지 배경 */
-.questionPage{
-background:url("question_bg.png") center/cover no-repeat;
-min-height:100vh;
-}
-
-/* 결과 페이지 배경 */
-.resultPage{
-background:url("result_bg.png") center/cover no-repeat;
-min-height:100vh;
-}
-
-/* 마우스 커서 */
-body{
 cursor:url("cursor.png"), auto;
+}
+
+/* 질문 페이지 배경 (PC) */
+
+.questionPage{
+background:url("question_bg_pc.png") center/cover no-repeat;
+min-height:100vh;
+}
+
+/* 결과 페이지 배경 (PC) */
+
+.resultPage{
+background:url("result_bg_pc.png") center/cover no-repeat;
+min-height:100vh;
+overflow:hidden;
 }
 
 .container{
 max-width:700px;
 margin:auto;
-padding:60px;
+padding:40px 20px;
 }
 
 h1{
-font-size:50px;
+font-size:48px;
 color:#ff4d88;
 }
 
 .question{
-margin:35px 0;
-font-size:30px;
+margin:30px 0;
+font-size:28px;
 }
 
 button{
 font-family:'Cute Font', cursive;
 font-size:26px;
-padding:12px 30px;
-margin:10px;
+padding:12px 25px;
+margin:8px;
 border:none;
-border-radius:14px;
+border-radius:12px;
 background:#ff9ecb;
 cursor:pointer;
 }
@@ -64,9 +67,67 @@ background:#ff7ab8;
 
 #result{
 display:none;
-font-size:45px;
+font-size:42px;
 color:#ff2e63;
-margin-top:80px;
+margin-top:60px;
+}
+
+/* 사탕 애니메이션 */
+
+.candy{
+position:absolute;
+top:-60px;
+width:50px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-60px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+
+}
+
+/* ================= */
+/* 📱 모바일 전용 디자인 */
+/* ================= */
+
+@media (max-width:600px){
+
+.questionPage{
+background:url("question_bg_mobile.png") center/cover no-repeat;
+}
+
+.resultPage{
+background:url("result_bg_mobile.png") center/cover no-repeat;
+}
+
+h1{
+font-size:36px;
+}
+
+.question{
+font-size:22px;
+}
+
+button{
+font-size:22px;
+padding:12px 20px;
+}
+
+#result{
+font-size:32px;
+}
+
+.candy{
+width:40px;
+}
+
 }
 
 </style>
@@ -82,30 +143,35 @@ margin-top:80px;
 Q1. 여자친구가 귀여운가요?<br>
 <button>매우 그렇다</button>
 <button>당연하다</button>
-<button>귀여워서 사탕 사주고 싶다</button>
+<button>귀여워서 깨물고 싶다</button>
 </div>
 
 <div class="question">
 Q2. 여자친구가 달달한걸 좋아하나요?<br>
 <button>좋아한다</button>
 <button>엄청 좋아한다</button>
-<button>사탕이면 더 좋아한다</button>
+<button> 환장한다 </button>
 </div>
 
 <div class="question">
 Q3. 나는 여자친구를 사랑하나요?<br>
-<button>사랑한다</button>
+<button>진짜 사랑한다</button>
 <button>많이 사랑한다</button>
-<button>사탕 사줄 정도로 사랑한다</button>
+<button>제일 사랑한다</button>
 </div>
 
 <button onclick="showResult()">테스트 결과 보기</button>
 
 <div id="result">
+
 🎉 테스트 결과 🎉<br><br>
+
 화이트데이에<br>
+
 <b>사탕을 사줘야 합니다 🍬</b><br><br>
+
 이 테스트는 100% 정확합니다.
+
 </div>
 
 </div>
@@ -119,7 +185,35 @@ document.body.classList.add("resultPage")
 
 document.getElementById("result").style.display="block"
 
-window.scrollTo(0,0)
+startCandyRain()
+
+}
+
+/* 사탕 떨어지는 애니메이션 */
+
+function startCandyRain(){
+
+setInterval(()=>{
+
+let candy=document.createElement("img")
+
+candy.src="candy.png"
+
+candy.className="candy"
+
+candy.style.left=Math.random()*window.innerWidth+"px"
+
+candy.style.animationDuration=(Math.random()*3+3)+"s"
+
+document.body.appendChild(candy)
+
+setTimeout(()=>{
+
+candy.remove()
+
+},6000)
+
+},400)
 
 }
 
